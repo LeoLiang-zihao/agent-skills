@@ -31,9 +31,9 @@ npx --yes skills update -g
 
 ## Skills included
 
-### `research-driven-plan`
+### `research-doc`
 
-Produces a structured research markdown document that prepares the next agent to write an implementation plan. Covers frontend, backend, aesthetic/design, and scientific research project tasks. Includes up-front clarifying questions, web search of frontier similar products and papers with pain-point analysis, trade-off tables, and citations to code repositories and online articles.
+Stage 1 of a three-stage human-gated pipeline: `research.md` (this skill) → human review → `plan.md` (next agent) → human review → implementation. Produces a structured `research.md` with clarifying questions, frontier-product/paper search with pain-point analysis, trade-off tables, and citations — then stops. Does not write a plan or code.
 
 **Use when** the user asks to research, investigate options, do tech selection, propose architectures, compare approaches, or when a task is large or ambiguous enough that jumping straight to code risks wasted work.
 

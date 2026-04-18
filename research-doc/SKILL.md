@@ -1,11 +1,41 @@
 ---
-name: research-driven-plan
-description: Produces a structured research markdown document that prepares the next agent to write an implementation plan. Covers frontend, backend, aesthetic/design, and scientific research project tasks. Includes up-front clarifying questions, web search of frontier similar products or papers with pain-point analysis, trade-off tables, and citations to code repositories and online articles. Use when the user asks to research, investigate options, do tech selection, propose architectures, compare approaches, or when a task is large or ambiguous enough that jumping straight to code risks wasted work.
+name: research-doc
+description: "Produces a structured `research.md` document for an ambiguous or large task, then stops. This is the FIRST stage of a three-stage human-gated pipeline — research.md (this skill) → human review → plan.md (written by a different agent) → human review → implementation. Do not write a plan, do not write code, do not pick a single winning direction; surface trade-offs and cite sources so the user can steer before the planning stage. Covers frontend, backend, aesthetic/design, and scientific research project tasks. Includes up-front clarifying questions, web search of frontier similar products or papers with pain-point analysis, trade-off tables, and citations to code repositories and online articles. 用来在大厂式需求 / 架构选型 / 科研选题场景里先产出一份 research.md 交给用户审阅，之后再由另一个 agent 读这份 research.md 写 plan.md。Use when the user asks to research, investigate options, do tech selection, propose architectures, compare approaches, or when a task is large or ambiguous enough that jumping straight to code risks wasted work."
 ---
 
-# Research-Driven Plan
+# Research Doc
 
-Turn an ambiguous user request into a research markdown doc that the next agent (or the same agent in the next turn) can read and produce a concrete implementation plan from, without needing to re-ask questions or re-do searches.
+Turn an ambiguous user request into a `research.md` that the **user** will read, edit, and approve — and that a **different agent** will later consume to write `plan.md`. This skill produces research only. Stop at the doc.
+
+## Pipeline position
+
+This is stage 1 of 3. Know your boundaries:
+
+```
+ambiguous request
+     │
+     ▼
+ ┌─────────────────┐     👤 user reviews/edits
+ │ THIS SKILL      │──► research.md ───────────────┐
+ │ (research-doc)  │                               ▼
+ └─────────────────┘                      (approved research.md)
+                                                   │
+                                                   ▼
+                                          ┌────────────────────┐
+                                          │ plan-from-research │──► plan.md
+                                          │ (different agent)  │
+                                          └────────────────────┘
+                                                   │
+                                                   ▼
+                                                  ...
+```
+
+Hard rules while in this stage:
+
+- **Do not write an implementation plan.** No phase breakdown, no file lists, no task assignments — that is the next agent's job.
+- **Do not write code.** Not even a scaffold. Code blocks in `research.md` are only for illustrating trade-offs (e.g. "Option A looks like this, Option B looks like that").
+- **Do not pick a single winner unless the user explicitly asks.** Surface trade-offs; let the user decide before planning starts.
+- **Ask before searching too wide.** If the request is ambiguous, clarify first; a focused research beats a sprawling one.
 
 ## When to use
 

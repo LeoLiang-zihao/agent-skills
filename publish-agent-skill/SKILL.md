@@ -229,4 +229,4 @@ Keep the final summary tight — the user cares about "it's live everywhere" mor
 - `skills` CLI (Anthropic): https://github.com/anthropics/skills
 - Skill authoring guide: https://github.com/anthropics/skills#authoring-skills
 - Personal skill repo: https://github.com/LeoLiang-zihao/agent-skills
-- Companion skill in this repo: `research-driven-plan`
+- Companion skill in this repo: `research-doc`

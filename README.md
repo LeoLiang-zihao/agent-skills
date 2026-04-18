@@ -85,6 +85,12 @@ Fetch a YouTube video's transcript via `youtube-transcript-api` and reshape it i
 
 **Use when** the user pastes a YouTube link, asks to "summarize / 总结 / 写摘要", extract "chapters / 章节", pull "quotes / 金句", or turn a talk into a "thread / 推文" or "blog post / 博客".
 
+### `youtube-tech-deep-dive-site`
+
+Turn a YouTube engineering or tech video into a polished HTML study site rather than a plain summary. The skill fetches the transcript with timestamps, reconstructs the speaker's real decision structure, and packages the result into a reusable learning page with sections like stack breakdowns, migration maps, skeptical reading, scenario mapping, and self-test prompts.
+
+**Use when** the user asks for things like "把这个 YouTube 视频做成完整 tech deep dive", "做成 HTML 学习网站", "turn this tech talk into a study site", or "generate a transcript-backed learning page from this engineering video".
+
 ## Adding new skills (authoritative: `publish-agent-skill` skill)
 
 An agent with `publish-agent-skill` loaded does both tracks automatically. Manual shortcut for humans:

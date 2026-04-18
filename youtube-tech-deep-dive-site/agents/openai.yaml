@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Deep Dive Site"
+  short_description: "Turn a YouTube tech talk into an HTML study site"
+  default_prompt: "Use $youtube-tech-deep-dive-site to turn this YouTube video into a transcript-backed HTML tech deep dive study site."

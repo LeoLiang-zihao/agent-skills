@@ -73,6 +73,12 @@ Two-track workflow for shipping **any** skill to every coding agent on the machi
 
 **Use when** the user asks to create, update, or sync a skill; or to install a third-party skill (`vercel-labs/agent-skills`, `anthropics/skills`, etc.); or to troubleshoot a skill that is not being picked up.
 
+### `youtube-content`
+
+Fetch a YouTube video's transcript via `youtube-transcript-api` and reshape it into the format the user asks for — summary, chapters, chapter summaries, Twitter/X thread, blog post, or quote reel. Accepts every YouTube URL variant (`watch?v=`, `youtu.be/`, `shorts/`, `embed/`, `live/`) or a raw 11-char video ID, supports a language fallback chain (e.g. `--language zh-Hans,zh,en`), and chunks long transcripts before summarizing.
+
+**Use when** the user pastes a YouTube link, asks to "summarize / 总结 / 写摘要", extract "chapters / 章节", pull "quotes / 金句", or turn a talk into a "thread / 推文" or "blog post / 博客".
+
 ## Adding new skills (authoritative: `publish-agent-skill` skill)
 
 An agent with `publish-agent-skill` loaded does both tracks automatically. Manual shortcut for humans:

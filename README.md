@@ -37,12 +37,21 @@ Produces a structured research markdown document that prepares the next agent to
 
 **Use when** the user asks to research, investigate options, do tech selection, propose architectures, compare approaches, or when a task is large or ambiguous enough that jumping straight to code risks wasted work.
 
+### `publish-agent-skill`
+
+Full workflow for authoring a new personal skill locally and shipping it to every coding agent on the machine (Cursor, Codex, Claude Code, Pi, Antigravity, Windsurf, Gemini CLI, and ~40 others). Covers scaffolding `SKILL.md`, writing a trigger-rich `description`, committing to this repo, fanning out with `npx skills update -g`, and verifying per-agent coverage.
+
+**Use when** the user asks to create, update, or sync a skill to all their agents, or to troubleshoot a skill that is not being picked up.
+
 ## Adding new skills
+
+The `publish-agent-skill` skill is the authoritative workflow for this repo; an agent with that skill loaded will do the right thing automatically. Manual version for humans:
 
 1. Create a new directory at the repo root: `<skill-name>/`
 2. Add `<skill-name>/SKILL.md` with YAML frontmatter (`name`, `description`)
-3. Commit and push
-4. Run `npx skills update -g` on any machine to pick it up
+3. Append an entry to the "Skills included" section above
+4. Commit and push
+5. Run `npx skills update -g -y` on any machine to pick it up
 
 See the [official skills authoring guide](https://github.com/anthropics/skills#authoring-skills) for structure requirements.
 

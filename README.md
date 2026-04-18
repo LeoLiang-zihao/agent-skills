@@ -61,6 +61,12 @@ Stage 1 of a three-stage human-gated pipeline: `research.md` (this skill) → hu
 
 **Use when** the user asks to research, investigate options, do tech selection, propose architectures, compare approaches, or when a task is large or ambiguous enough that jumping straight to code risks wasted work.
 
+### `plan-from-research`
+
+Stage 2 of the 3-stage pipeline (`research-doc` → **this** → implementation). Consumes an approved `research.md` and produces a concrete `plan.md` with phased roadmap, per-phase files-to-change lists, compilable code skeletons (≤30 lines each), exact verification commands, rollback steps, a risk matrix, and a "what must not break" compatibility section. Halts and routes the user back to `research-doc` if the research is missing, draft, or has unresolved open questions.
+
+**Use when** the user says "write a plan", "write implementation plan / implementation md", "refactor plan", "根据 research.md 写 plan", "写实现方案", "写一个 plan.md".
+
 ### `publish-agent-skill`
 
 Two-track workflow for shipping **any** skill to every coding agent on the machine AND keeping the central repo authoritative so new machines can replay the install. **Track A** — author a new personal skill here (scaffold `SKILL.md`, trigger-rich `description`, commit, push, `npx skills update -g`). **Track B** — install a third-party skill from someone else's repo AND record it in `external-skills.json` so `bootstrap.sh` on future machines restores it.

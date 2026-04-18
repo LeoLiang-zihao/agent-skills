@@ -43,6 +43,12 @@ Full workflow for authoring a new personal skill locally and shipping it to ever
 
 **Use when** the user asks to create, update, or sync a skill to all their agents, or to troubleshoot a skill that is not being picked up.
 
+### `pi-docs-assistant`
+
+Makes other agents treat the locally installed pi docs and examples as the source of truth for pi-specific questions. Covers how pi works, context loading, extensions, themes, skills, prompt templates, TUI, SDK, providers, models, and packages.
+
+**Use when** the user asks about pi itself or wants pi-specific code/config, and the agent should read local pi docs before answering instead of relying on memory.
+
 ## Adding new skills
 
 The `publish-agent-skill` skill is the authoritative workflow for this repo; an agent with that skill loaded will do the right thing automatically. Manual version for humans:

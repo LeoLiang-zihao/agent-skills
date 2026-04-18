@@ -329,7 +329,6 @@ Adjust effort to the scope signal:
 | User says "research" or "调研" without qualifier | Full 5-phase, 3-5 pages of markdown |
 | User says "deep dive" or "comprehensive" | Full 5-phase + prototype + explicit risk matrix + 10+ citations |
 | User is deciding between 2+ paid products | Include a cost table with monthly spend scenarios |
-| User mentions an interview or resume context | Include a "talking points" section so the decision is also defensible verbally |
 
 ---
 

@@ -73,6 +73,12 @@ Two-track workflow for shipping **any** skill to every coding agent on the machi
 
 **Use when** the user asks to create, update, or sync a skill; or to install a third-party skill (`vercel-labs/agent-skills`, `anthropics/skills`, etc.); or to troubleshoot a skill that is not being picked up.
 
+### `frontend-design`
+
+Design-first frontend implementation skill for building distinctive, production-grade UIs with a clear aesthetic point of view instead of generic AI-looking layouts. Pushes the agent to choose an intentional visual direction, make typography and palette decisions that carry character, and implement real working code with refined motion, spacing, and composition.
+
+**Use when** the user asks to build or restyle a web page, landing page, dashboard, React component, HTML/CSS artifact, poster, or any interface where visual quality and taste are part of the task.
+
 ### `youtube-content`
 
 Fetch a YouTube video's transcript via `youtube-transcript-api` and reshape it into the format the user asks for — summary, chapters, chapter summaries, Twitter/X thread, blog post, or quote reel. Accepts every YouTube URL variant (`watch?v=`, `youtu.be/`, `shorts/`, `embed/`, `live/`) or a raw 11-char video ID, supports a language fallback chain (e.g. `--language zh-Hans,zh,en`), and chunks long transcripts before summarizing.

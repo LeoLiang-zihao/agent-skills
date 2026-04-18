@@ -22,7 +22,7 @@ Meta:
 - How many phases + effort estimate total.
 - Which phase to start at (usually Phase 0).
 - Any prerequisite user actions (OAuth login, API key, account).
-- ⭐ Which phase is the cut-point (first end-user-visible value).
+- Which phase is the cut-point (`STAR`, first end-user-visible value).
 
 ---
 
@@ -76,11 +76,11 @@ Skip this section for backend / data / ML tasks.
 
 One block per phase. Use the exact structure below for each.
 
-### Phase 0 — Scaffold
+### Phase 0 — Foundation
 
 **Goal**: <one sentence>.
 
-**Exit criterion** (research §9): <observable outcome, e.g. "`pnpm --filter web dev` serves a blank page at localhost:3000">.
+**Exit criterion** (research §9): <observable outcome, e.g. "the chosen entrypoint boots and the project smoke test passes">.
 
 **Depends on**: — (entry phase).
 
@@ -89,44 +89,41 @@ One block per phase. Use the exact structure below for each.
 **Prerequisite user actions** (if any):
 
 ```bash
-# example: one-time subscription login
-pi /login
+# example only
+<one-time login / account / permission setup command>
 ```
 
 **Files changed**:
 
 ```
-Add      apps/web/package.json             — Next.js 15 + deps from research §8
-Add      apps/web/src/app/layout.tsx       — root layout
-Modify   start.sh                          — add `dev` subcommand (per research §9 P0)
+Add      <new file>                        — new phase entrypoint / schema / route
+Modify   <existing file>                   — wire the chosen architecture boundary
+Delete   <legacy file>                     — remove superseded path if phase requires it
 ```
 
-**Code skeletons** (load-bearing files only, ≤ 30 lines each):
+**Code skeletons** (load-bearing files only, ≤ 30 lines each; use the project's primary language):
 
 ```ts
-// apps/web/src/server/api/routers/cards.ts
-import { z } from "zod";
-import { procedure, router } from "@/server/api/trpc";
+// src/features/items/service.ts
+export type LoadItemsInput = { limit?: number };
 
-export const cardsRouter = router({
-  list: procedure
-    .input(z.object({ limit: z.number().default(20) }))
-    .query(async ({ input }) => {
-      // TODO: wire to backend/main.py /api/cards (research §7)
-      return [];
-    }),
-});
+export async function loadItems(
+  input: LoadItemsInput,
+): Promise<unknown[]> {
+  // TODO: connect to the boundary chosen in research §7 / §8
+  return [];
+}
 ```
 
 **Verification**:
 
 ```bash
-pnpm --filter web build
-pnpm --filter web dev &
-curl -sf http://localhost:3000/ > /dev/null && echo "OK"
+<project build command>
+<project test command>
+<phase-specific smoke check>
 ```
 
-**Rollback**: `git revert <phase-tag>`; optionally `rm -rf apps/web/`.
+**Rollback**: `git revert <phase-tag>`; or delete only the files introduced by this phase if it is still isolated.
 
 ---
 
@@ -136,7 +133,7 @@ curl -sf http://localhost:3000/ > /dev/null && echo "OK"
 
 ---
 
-### Phase 2 — <name>  ⭐ cut-point
+### Phase 2 — <name>  STAR cut-point
 
 (same structure; mark the first phase producing end-user-visible value)
 
@@ -154,25 +151,22 @@ List ALL packages added across all phases, with versions from research §8. Grou
 
 | Phase | Package | Version | Purpose |
 |---|---|---|---|
-| P0 | next | 15.x | app scaffold |
-| P0 | @trpc/server | 11.x | BFF |
+| P0 | <package> | <version> | <why it is introduced here> |
 | ... | ... | ... | ... |
 
 ### Environment variables
 
 ```bash
-# .env.example (add to repo, do not commit .env.local)
-NEXT_PUBLIC_API_URL=http://localhost:8000
-# Optional: Pi / LLM auth fallbacks (primary resolution: ~/.pi/agent/auth.json)
-ANTHROPIC_API_KEY=
-OPENAI_API_KEY=
+# .env.example (add to repo, do not commit real secrets)
+PRIMARY_API_BASE_URL=
+DATABASE_URL=
 ```
 
 ### One-time user setup
 
 ```bash
-# e.g. Pi subscription login (OAuth to ChatGPT Plus / Claude Pro)
-pi /login
+# example only
+<one-time login / account / secret setup command>
 ```
 
 ---
@@ -198,9 +192,9 @@ Enumerate every invariant pulled from `AGENTS.md`, existing API contracts, or li
 
 | Invariant | Source | How this plan honors it |
 |---|---|---|
-| Existing API `POST /api/cards` payload shape | `backend/main.py:42` | Next.js BFF forwards unchanged; no schema change |
-| Bilingual writing style in docs | `AGENTS.md §Writing style` | Plan + code comments follow |
-| `./start.sh add <url>` command still works | user muscle memory | P2 rewires impl, keeps command signature |
+| Existing API payload shape | `<path/to/source>:<line>` | adapter layer preserves request/response contract |
+| Doc or comment language convention | `AGENTS.md` | plan and follow-on code stay in the same language |
+| Existing workflow command still works | `README.md` or user muscle memory | later phases preserve the public command surface |
 | ... | ... | ... |
 
 ---
@@ -210,9 +204,9 @@ Enumerate every invariant pulled from `AGENTS.md`, existing API contracts, or li
 The plan is considered executed when all of these are checked. The implementation agent uses this as its definition of done.
 
 ```
-- [ ] P0 — scaffold: `<exit criterion>`
+- [ ] P0 — foundation: `<exit criterion>`
 - [ ] P1 — <name>: `<exit criterion>`
-- [ ] P2 — <name>: `<exit criterion>` ⭐
+- [ ] P2 — <name>: `<exit criterion>` STAR
 - [ ] P3 — <name>: `<exit criterion>`
 - [ ] P4 — <name>: `<exit criterion>`
 - [ ] Compatibility: all invariants in §6 verified green
@@ -228,7 +222,7 @@ Map each phase back to the research section(s) it operationalizes.
 
 | Phase | Research section | Notes |
 |---|---|---|
-| P0 | §7 architecture + §8 stack | scaffolding, no business logic |
+| P0 | §7 architecture + §8 stack | foundation only, no business logic |
 | P1 | §9 roadmap row 1 | ... |
 | ... | ... | ... |
 

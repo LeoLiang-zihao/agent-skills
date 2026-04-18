@@ -63,7 +63,7 @@ Stage 1 of a three-stage human-gated pipeline: `research.md` (this skill) → hu
 
 ### `plan-from-research`
 
-Stage 2 of the 3-stage pipeline (`research-doc` → **this** → implementation). Consumes an approved `research.md` and produces a concrete `plan.md` with phased roadmap, per-phase files-to-change lists, compilable code skeletons (≤30 lines each), exact verification commands, rollback steps, a risk matrix, and a "what must not break" compatibility section. Halts and routes the user back to `research-doc` if the research is missing, draft, or has unresolved open questions.
+Stage 2 of the 3-stage pipeline (`research-doc` → **this** → implementation). Consumes an approved `research.md` and produces an execution-ready `plan.md` for frontend, backend, data, or full-stack work. Preserves the chosen direction from research, expands each roadmap row into concrete phases with files-to-change, verification, rollback, compatibility, and brief load-bearing skeletons, then stops. Halts and routes the user back to `research-doc` if the research is missing, draft, or has unresolved open questions.
 
 **Use when** the user says "write a plan", "write implementation plan / implementation md", "refactor plan", "根据 research.md 写 plan", "写实现方案", "写一个 plan.md".
 

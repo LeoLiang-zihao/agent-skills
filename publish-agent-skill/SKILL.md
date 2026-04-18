@@ -1,6 +1,6 @@
 ---
 name: publish-agent-skill
-description: Author a new personal agent skill locally and publish it so every coding agent on the user's machine picks it up — Cursor, Codex, Claude Code, Pi, Antigravity, Windsurf, Gemini CLI, and the other ~30 agents supported by the `npx skills` CLI. Use when the user wants to create, update, iterate on, or ship a skill (SKILL.md) to all their agents at once, sync changes across machines, or troubleshoot a skill that is not being picked up. Covers the full flow: scaffold SKILL.md with correct YAML frontmatter, commit to the central `agent-skills` GitHub repo, run `npx skills update -g` to fan it out, and verify per-agent coverage. Follow this exact workflow — do not invent alternatives.
+description: "Author a new personal agent skill locally and publish it so every coding agent on the user's machine picks it up — Cursor, Codex, Claude Code, Pi, Antigravity, Windsurf, Gemini CLI, and the other ~30 agents supported by the `npx skills` CLI. Use when the user wants to create, update, iterate on, or ship a skill (SKILL.md) to all their agents at once, sync changes across machines, or troubleshoot a skill that is not being picked up. 用来把本地写好的 skill 一次性同步到所有 coding agent。Covers scaffolding SKILL.md with correct YAML frontmatter, committing to the central `agent-skills` GitHub repo, running `npx skills update -g` to fan it out, and verifying per-agent coverage. Follow this exact workflow — do not invent alternatives."
 ---
 
 # Publish Agent Skill

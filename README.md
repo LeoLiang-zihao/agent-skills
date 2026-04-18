@@ -4,17 +4,37 @@ Personal agent skills for [Cursor](https://cursor.com), [Codex](https://github.c
 
 Synced across machines and agents via [`npx skills`](https://github.com/anthropics/skills).
 
-## Install globally (all agents, all projects on this machine)
+## Install everything (own skills + third-party) on a new machine
+
+Two-step bootstrap. Run once per new laptop:
+
+```bash
+git clone git@github.com:LeoLiang-zihao/agent-skills.git ~/Projects/agent-skills
+cd ~/Projects/agent-skills && ./scripts/bootstrap.sh
+```
+
+This:
+
+1. Installs every skill authored in this repo to all agents via `npx skills add`.
+2. Reads [`external-skills.json`](./external-skills.json) and replays each third-party `npx skills add <repo> -s <skill>` command, so skills I use from upstream repos (Vercel, Anthropic, etc.) also land on the new machine.
+
+To refresh any time:
+
+```bash
+~/Projects/agent-skills/scripts/bootstrap.sh --update
+```
+
+## Install only this repo's own skills (no manifest)
 
 ```bash
 npx --yes skills add LeoLiang-zihao/agent-skills -g -a '*' --all -y
 ```
 
-This places the skills under:
+Places skills under:
 
 - `~/.agents/skills/` — universal (Cursor, Codex, Antigravity, Gemini CLI, OpenCode, etc.)
 - `~/.claude/skills/` — Claude Code
-- `~/.codebuddy/skills/`, `~/.pi/skills/`, etc. — symlinked for per-agent layouts
+- `~/.codebuddy/skills/`, `~/.pi/agent/skills/`, etc. — symlinked for per-agent layouts
 
 ## Install into a single project
 
@@ -23,11 +43,15 @@ cd /path/to/project
 npx --yes skills add LeoLiang-zihao/agent-skills -a '*' --all -y
 ```
 
-## Update to latest
+## Adding a third-party skill (keep cross-machine sync working)
 
-```bash
-npx --yes skills update -g
-```
+Never run a bare `npx skills add <third-party-repo>` — it only affects the current machine. Instead:
+
+1. `npx --yes skills add <owner>/<repo> -g -a '*' -s <skill-name> -y`
+2. Append the `{repo, skills, note}` entry to [`external-skills.json`](./external-skills.json).
+3. Commit + push.
+
+The `publish-agent-skill` skill automates this (Track B). See its `SKILL.md` for the exact workflow.
 
 ## Skills included
 
@@ -39,27 +63,33 @@ Stage 1 of a three-stage human-gated pipeline: `research.md` (this skill) → hu
 
 ### `publish-agent-skill`
 
-Full workflow for authoring a new personal skill locally and shipping it to every coding agent on the machine (Cursor, Codex, Claude Code, Pi, Antigravity, Windsurf, Gemini CLI, and ~40 others). Covers scaffolding `SKILL.md`, writing a trigger-rich `description`, committing to this repo, fanning out with `npx skills update -g`, and verifying per-agent coverage.
+Two-track workflow for shipping **any** skill to every coding agent on the machine AND keeping the central repo authoritative so new machines can replay the install. **Track A** — author a new personal skill here (scaffold `SKILL.md`, trigger-rich `description`, commit, push, `npx skills update -g`). **Track B** — install a third-party skill from someone else's repo AND record it in `external-skills.json` so `bootstrap.sh` on future machines restores it.
 
-**Use when** the user asks to create, update, or sync a skill to all their agents, or to troubleshoot a skill that is not being picked up.
+**Use when** the user asks to create, update, or sync a skill; or to install a third-party skill (`vercel-labs/agent-skills`, `anthropics/skills`, etc.); or to troubleshoot a skill that is not being picked up.
 
-### `pi-docs-assistant`
+## Adding new skills (authoritative: `publish-agent-skill` skill)
 
-Makes other agents treat the locally installed pi docs and examples as the source of truth for pi-specific questions. Covers how pi works, context loading, extensions, themes, skills, prompt templates, TUI, SDK, providers, models, and packages.
+An agent with `publish-agent-skill` loaded does both tracks automatically. Manual shortcut for humans:
 
-**Use when** the user asks about pi itself or wants pi-specific code/config, and the agent should read local pi docs before answering instead of relying on memory.
+**Track A — new personal skill:**
 
-## Adding new skills
+1. `mkdir ~/Projects/agent-skills/<skill-name>/`
+2. Write `<skill-name>/SKILL.md` with YAML frontmatter (`name`, `description`).
+3. Append an entry to "Skills included" above.
+4. Commit + push.
+5. `npx skills update -g -y` on any machine to pick it up.
 
-The `publish-agent-skill` skill is the authoritative workflow for this repo; an agent with that skill loaded will do the right thing automatically. Manual version for humans:
+**Track B — third-party skill:**
 
-1. Create a new directory at the repo root: `<skill-name>/`
-2. Add `<skill-name>/SKILL.md` with YAML frontmatter (`name`, `description`)
-3. Append an entry to the "Skills included" section above
-4. Commit and push
-5. Run `npx skills update -g -y` on any machine to pick it up
+1. `npx --yes skills add <owner>/<repo> -g -a '*' -s <skill-name> -y`.
+2. Append to `external-skills.json`:
+   ```json
+   { "repo": "<owner>/<repo>", "skills": ["<skill-name>"], "note": "why installed" }
+   ```
+3. Commit + push.
+4. Any future machine runs `./scripts/bootstrap.sh` and gets the same set.
 
-See the [official skills authoring guide](https://github.com/anthropics/skills#authoring-skills) for structure requirements.
+See the [official skills authoring guide](https://github.com/anthropics/skills#authoring-skills) for `SKILL.md` structure.
 
 ## License
 

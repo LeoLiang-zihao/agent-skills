@@ -1,0 +1,16 @@
+{
+  "$schema": "./scripts/external-skills.schema.json",
+  "description": "Registry of third-party skills this machine should install alongside the skills authored in this repo. Run ./scripts/bootstrap.sh on a new machine to install everything in one go. When you run `npx skills add <repo> -s <skill>`, also append the entry here and push, or cross-machine sync breaks.",
+  "sources": [
+    {
+      "repo": "vercel-labs/agent-skills",
+      "skills": ["vercel-react-best-practices", "web-design-guidelines"],
+      "note": "Vercel's React + web UI review rules."
+    },
+    {
+      "repo": "vercel-labs/next-skills",
+      "skills": ["next-best-practices"],
+      "note": "Next.js 15+ App Router conventions."
+    }
+  ]
+}

@@ -19,7 +19,9 @@ Meta:
 - Recommendation: ...
 - Key reason: ...
 - Biggest risk: ...
-- Rough cost / time: ...
+- Rough running cost: ...
+
+> Do not add a "time to implement" or "workdays" bullet. An agent will write the code; person-day estimates are noise in this workflow.
 
 ---
 
@@ -101,8 +103,8 @@ Leave empty if none came up.
 - **Shape**: one-sentence description
 - **Pros**: ...
 - **Cons**: ...
-- **Cost estimate**: ...
-- **Effort estimate**: ...
+- **Running cost estimate**: ... (infra / vendor $, not human time)
+- **Complexity signal**: qualitative — "small / medium / large", plus what makes it big (e.g. "touches auth + schema + UI"). Do NOT write days or hours.
 - **When to pick**: ...
 
 ### Option B — <short name>
@@ -117,12 +119,14 @@ Leave empty if none came up.
 
 | Dimension | A | B | C |
 |---|---|---|---|
-| Time to first demo | ... | ... | ... |
+| Implementation complexity | ... | ... | ... |
 | Long-term maintainability | ... | ... | ... |
-| Cost per month | ... | ... | ... |
-| Learning curve | ... | ... | ... |
+| Running cost per month | ... | ... | ... |
+| Learning curve (for the human reviewer) | ... | ... | ... |
 | Fit with existing stack | ... | ... | ... |
 | Observability / debuggability | ... | ... | ... |
+
+> Do not add a "time to build in days" row — this doc is consumed by a planning agent, not used for sprint scheduling.
 
 ---
 
@@ -217,16 +221,18 @@ Only for backend / systems tasks.
 
 ## 9. Implementation roadmap
 
-Each phase: exit criterion + time estimate + dependency.
+Each phase: exit criterion + dependency. No person-day / workday estimates — an agent will implement.
 
-| Phase | Goal | Exit criterion | Est. effort | Depends on |
-|---|---|---|---|---|
-| 0. Scaffold | ... | ... | 0.5d | — |
-| 1. ... | ... | ... | ... | 0 |
-| 2. ... | ... | ... | ... | 1 |
-| 3. ... | ... | ... | ... | 2 |
+| Phase | Goal | Exit criterion | Depends on |
+|---|---|---|---|
+| 0. Scaffold | ... | ... | — |
+| 1. ... | ... | ... | 0 |
+| 2. ... | ... | ... | 1 |
+| 3. ... | ... | ... | 2 |
 
 Cutting point: the user can stop after any phase and still have value. Mark the first phase that produces end-user-visible value with ⭐.
+
+> Do NOT add an "Est. effort", "Days", "Hours", or "Sprint" column. If you feel the urge to quantify work, express it as scope (files / modules / endpoints touched) in the Goal cell instead.
 
 ---
 

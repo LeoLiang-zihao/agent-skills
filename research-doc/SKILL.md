@@ -212,10 +212,11 @@ Bias toward **one recommendation** at the end of each table. "It depends" is all
 
 - Cost: per month, per 1k users, per request
 - Latency: p50 / p99
-- Time to implement: days, by phase
 - Bundle size, memory, cold start
 
 Missing numbers = reader will supply their own (usually too optimistic).
+
+**Do NOT estimate implementation time in human-days / workdays / hours.** An agent writes the code in this workflow, so person-day estimates are meaningless noise that the user has to strip out. If you need to convey relative work, describe it qualitatively (e.g. "small — one module", "large — touches auth + schema + UI") or in concrete artifacts (files changed, new endpoints, migration steps) — never in days, hours, or sprints.
 
 ### Draw architecture diagrams in ASCII
 
@@ -236,9 +237,10 @@ Keep them simple and greppable. Avoid mermaid unless the doc will be rendered in
 End every research doc with an implementation roadmap. Each phase:
 
 - Has a clear exit criterion ("cards list page renders from tRPC")
-- Has a rough time estimate (hours or days)
 - Has explicit dependencies on prior phases
 - Can be cut without blocking the next (so the user can stop anytime)
+
+Do not attach time/effort estimates in days or hours to phases — an agent will implement them. Order the phases and state dependencies; that is enough for the planning agent.
 
 ---
 

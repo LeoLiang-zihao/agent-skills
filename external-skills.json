@@ -16,6 +16,11 @@
       "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
       "skills": ["ui-ux-pro-max"],
       "note": "Cross-platform UI/UX design intelligence for production-grade interfaces."
+    },
+    {
+      "repo": "davis7dotsh/better-context",
+      "skills": ["btca-local"],
+      "note": "Local repo search workflow for answering codebase questions."
     }
   ]
 }

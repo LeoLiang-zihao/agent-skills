@@ -19,10 +19,12 @@ Meta:
 3–6 bullets. Someone reading only this block should know:
 
 - What this plan delivers (one sentence from research §6).
-- How many phases + effort estimate total.
+- How many phases.
 - Which phase to start at (usually Phase 0).
 - Any prerequisite user actions (OAuth login, API key, account).
 - Which phase is the cut-point (`STAR`, first end-user-visible value).
+
+Do not include time/effort estimates anywhere in this plan. Executors are agents; a wall-clock guess is noise.
 
 ---
 
@@ -83,8 +85,6 @@ One block per phase. Use the exact structure below for each.
 **Exit criterion** (research §9): <observable outcome, e.g. "the chosen entrypoint boots and the project smoke test passes">.
 
 **Depends on**: — (entry phase).
-
-**Est. effort**: <from research>.
 
 **Prerequisite user actions** (if any):
 

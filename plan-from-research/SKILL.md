@@ -99,12 +99,11 @@ Convert each roadmap row in `research.md §9` into one concrete phase block. Eve
 1. `Goal`
 2. `Exit criterion`
 3. `Depends on`
-4. `Est. effort`
-5. `Prerequisite user actions` if any
-6. `Files changed`, grouped by `Add / Modify / Delete / Move`
-7. `Code skeletons` for 1-3 load-bearing files
-8. `Verification` commands
-9. `Rollback`
+4. `Prerequisite user actions` if any
+5. `Files changed`, grouped by `Add / Modify / Delete / Move`
+6. `Code skeletons` for 1-3 load-bearing files
+7. `Verification` commands
+8. `Rollback`
 
 Rules:
 
@@ -112,6 +111,7 @@ Rules:
 - Every phase must be independently cuttable. Mark the first end-user-visible value with `STAR`.
 - Every file-level change must cite the research section that justifies it.
 - Skeletons should show shape, interfaces, and one representative path only. Leave real logic as TODOs.
+- **Do not include time or effort estimates** (no "2 days", "1 week", "Est. effort: ..."). Plans are executed by agents, not scheduled against calendars — an exit criterion tells the executor when a phase is done; a duration guess adds noise and goes stale. If the research doc includes durations, drop them on intake.
 
 ### 4. Draft `plan.md`
 

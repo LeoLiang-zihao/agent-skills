@@ -24,8 +24,8 @@
     },
     {
       "repo": "mattpocock/skills",
-      "skills": ["to-prd", "to-issues"],
-      "note": "Turn conversation into a PRD; split plan/PRD into tracer-bullet GitHub issues."
+      "skills": ["caveman", "design-an-interface", "domain-model", "edit-article", "git-guardrails-claude-code", "github-triage", "grill-me", "improve-codebase-architecture", "migrate-to-shoehorn", "obsidian-vault", "qa", "request-refactor-plan", "scaffold-exercises", "setup-pre-commit", "tdd", "to-issues", "to-prd", "triage-issue", "ubiquitous-language", "write-a-skill", "zoom-out"],
+      "note": "Matt Pocock's workflow, planning, and coding skills."
     }
   ]
 }

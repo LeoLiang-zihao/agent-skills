@@ -26,6 +26,11 @@
       "repo": "mattpocock/skills",
       "skills": ["caveman", "design-an-interface", "domain-model", "edit-article", "git-guardrails-claude-code", "github-triage", "grill-me", "improve-codebase-architecture", "migrate-to-shoehorn", "obsidian-vault", "qa", "request-refactor-plan", "scaffold-exercises", "setup-pre-commit", "tdd", "to-issues", "to-prd", "triage-issue", "ubiquitous-language", "write-a-skill", "zoom-out"],
       "note": "Matt Pocock's workflow, planning, and coding skills."
+    },
+    {
+      "repo": "Master-cai/Research-Paper-Writing-Skills",
+      "skills": ["research-paper-writing"],
+      "note": "Academic paper writing guidance for ML/CV/NLP papers."
     }
   ]
 }

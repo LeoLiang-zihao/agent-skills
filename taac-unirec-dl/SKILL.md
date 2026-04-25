@@ -1,6 +1,6 @@
 ---
 name: taac-unirec-dl
-description: "Guides deep-learning model development for TAAC 2026 Tencent UNI-REC and related Transformer recommender-system competition work. Use when working on TAAC, Tencent UNI-REC, Tencent Ads Algorithm Competition, SASRec, semantic IDs, feature interaction, sequence modeling, retrieval/ranking, offline evaluation, or competition submissions."
+description: "Guides deep-learning model development for TAAC 2026 Tencent UNI-REC and related Transformer recommender-system competition work without importing assumptions from older TAAC tasks. Use when working on TAAC 2026, Tencent UNI-REC, Tencent Ads Algorithm Competition 2026, Transformer recommendation models, unified sequence-plus-feature interaction, retrieval/ranking, official evaluation, or competition submissions."
 ---
 
 # TAAC UNI-REC DL
@@ -11,7 +11,7 @@ Use this skill for competition-grade PyTorch recommendation modeling where seque
 
 1. Establish official context before coding.
    - Inspect this repo for `README*`, `AGENTS.md`, `CLAUDE.md`, configs, dataset schemas, and baseline files.
-   - Use BTCA search when official code is absent or stale: clone/search official repositories under `~/.btca/agent/sandbox`, starting with TencentAdvertisingAlgorithmCompetition baselines and any user-provided TAAC 2026 link.
+   - Use BTCA search when official code is absent or stale: clone/search user-provided TAAC 2026 links and Tencent UNI-REC official packages under `~/.btca/agent/sandbox`.
    - Read [references/official-context.md](references/official-context.md) before changing model, dataset, inference, or evaluation behavior.
 
 2. Anchor every change to official data and metrics.
@@ -22,6 +22,7 @@ Use this skill for competition-grade PyTorch recommendation modeling where seque
 3. Develop model code conservatively.
    - Treat official baseline behavior as the first regression target; run or reproduce baseline tests before replacing components.
    - Keep model changes modular: embeddings/features, sequence encoder, interaction block, retrieval head, ranker head, loss, sampler, evaluator.
+   - Do not assume TAAC 2025 architectures, feature subsets, semantic-ID pipelines, sampling, or metrics apply to TAAC 2026 unless 2026 official docs/code say so.
    - Use PyTorch mixed precision, gradient clipping, deterministic seeds, checkpoint metadata, and explicit config files for experiments.
 
 4. Verify like a competition entry.

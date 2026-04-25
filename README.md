@@ -69,9 +69,9 @@ Design-first frontend implementation skill for building distinctive, production-
 
 ### `taac-unirec-dl`
 
-Competition-grade deep-learning workflow for TAAC 2026 Tencent UNI-REC and related Tencent Ads Algorithm Competition recommender-system work. It forces agents to inspect official code/data first, use BTCA for official baseline search when needed, preserve dataset schema and evaluator fidelity, and develop Transformer/SASRec/semantic-ID changes through reproducible PyTorch experiments.
+Competition-grade deep-learning workflow for TAAC 2026 Tencent UNI-REC and related Tencent Ads Algorithm Competition recommender-system work. It forces agents to inspect 2026 official code/data first, use BTCA for official source search when needed, preserve dataset schema and evaluator fidelity, and avoid importing assumptions from older TAAC tasks.
 
-**Use when** working on TAAC, Tencent UNI-REC, Tencent Ads Algorithm Competition, Transformer RecSys, SASRec, semantic IDs, sequence modeling, feature interaction, retrieval/ranking, or competition submissions.
+**Use when** working on TAAC 2026, Tencent UNI-REC, Tencent Ads Algorithm Competition 2026, Transformer recommendation models, unified sequence-plus-feature interaction, retrieval/ranking, official evaluation, or competition submissions.
 
 ### `youtube-content`
 

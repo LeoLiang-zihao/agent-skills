@@ -5,7 +5,7 @@ description: "Guides deep-learning model development for TAAC 2026 Tencent UNI-R
 
 # TAAC UNI-REC DL
 
-Use this skill for competition-grade PyTorch recommendation modeling where sequence modeling, feature interaction, semantic IDs, and official evaluation fidelity matter.
+Use this skill for competition-grade PyTorch recommendation modeling where TAAC 2026 official data, unified sequence-plus-feature interaction, and evaluator fidelity matter.
 
 ## Workflow
 
@@ -16,7 +16,7 @@ Use this skill for competition-grade PyTorch recommendation modeling where seque
 
 2. Anchor every change to official data and metrics.
    - Prefer official dataset schemas, split definitions, feature dictionaries, candidate generation rules, and submission format over inferred structures.
-   - For Hugging Face-hosted public data, use `huggingface-datasets` to inspect subsets, splits, parquet shards, row examples, and statistics before writing loaders.
+   - For Hugging Face-hosted official data, use `huggingface-datasets` to inspect subsets, splits, parquet shards, row examples, and statistics before writing loaders.
    - Do not invent columns, labels, metrics, negative sampling, or target semantics without finding them in official docs/data/code.
 
 3. Develop model code conservatively.
@@ -35,7 +35,7 @@ Use this skill for competition-grade PyTorch recommendation modeling where seque
 Before editing a loader:
 
 ```bash
-rg -n "load_dataset|read_parquet|candidate|user_feat|item_feat|seq|metric|submit" .
+rg -n "load_dataset|read_parquet|schema|feature|sequence|candidate|metric|evaluate|submit" .
 ```
 
 Then inspect the official schema/source named by the result, not a guessed replacement.

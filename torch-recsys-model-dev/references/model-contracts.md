@@ -24,11 +24,12 @@ Example:
 
 ```text
 Data Facts Snapshot:
-- Target: pCVR-style binary label from train/valid only.
+- Target: pCVR-style row-level prediction if confirmed by official/local docs.
 - Test: same feature surface as train minus label.
 - User history: multiple domain sequences, ordered by timestamp before label_time.
 - Static features: user/item scalar int, user/item list int, user dense vectors.
-- Metric: GAUC/logloss path in local evaluator; model head returns one row-level logit.
+- Metric: read from the local official docs/evaluator; mark UNKNOWN until confirmed.
+- Model head: one row-level score/logit unless the local evaluator or submission format says otherwise.
 - Leakage: no events after label_time in sequence features.
 ```
 
@@ -51,7 +52,7 @@ Example:
 domain_seq_ids: LongTensor[B, L] padded with 0
 domain_seq_mask: BoolTensor[B, L] true means valid token
 user_dense: list[FloatTensor[B, D_i]] no padding, may be absent in test only if official docs say so
-pcvr_label: FloatTensor[B] train/valid only, never required for submission rows
+target_label: FloatTensor[B] train/valid only, never required for submission rows
 ```
 
 ## Model Forward Contract
@@ -61,16 +62,18 @@ Every model change should preserve or intentionally update:
 - Required batch keys.
 - Optional batch keys and fallback behavior.
 - Output dict keys.
-- Main logit shape, usually `[B]` or `[B, 1]` but never ambiguous.
-- Auxiliary outputs and losses.
+- Main score/logit shape, usually `[B]` or `[B, 1]` but never ambiguous.
+- Auxiliary outputs and losses only when the active architecture already defines them.
 - `model.train()` vs `model.eval()` behavior.
 
-Good output contract:
+Use the current repo's established output names. Do not introduce names like `pcvr_logit` or `aux_losses` unless the active model/training loop already uses them.
+
+Generic output contract:
 
 ```python
 {
-    "pcvr_logit": torch.Tensor,  # shape [B]
-    "aux_losses": dict[str, torch.Tensor],
+    "main_score": torch.Tensor,  # shape [B], name should match the current repo
+    # "optional_aux": ...       # only if the active architecture already defines it
 }
 ```
 

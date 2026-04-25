@@ -38,7 +38,7 @@ Do NOT use for:
 
 3. Establish contracts before editing.
    - Batch contract: input keys, shape, dtype, padding/null convention, device, and expected missing fields.
-   - Model contract: `forward()` inputs, output keys, logit shape, auxiliary losses, and train/eval behavior.
+   - Model contract: `forward()` inputs, output keys, score/logit shape, optional auxiliary outputs only if the current architecture already uses them, and train/eval behavior.
    - Config contract: each optional component has a flag, default, and test-visible behavior.
    - See [references/model-contracts.md](references/model-contracts.md).
 

@@ -2,6 +2,36 @@
 
 Use contracts to stop RecSys model bugs from spreading across loader, collator, model, loss, and evaluator.
 
+## Data Facts Snapshot
+
+Model work should carry a compact fact snapshot from the local data/schema/evaluator context. This is not a full rules review; it is the minimum set of facts needed to avoid designing the wrong model.
+
+Include:
+
+- Prediction target and label semantics.
+- Train/valid/holdout/test field differences.
+- Which fields are sequence, static user, static item, context, dense, sparse, and list/multi-hot.
+- Sequence ordering, truncation, and label-time cutoff rules.
+- Padding/null/sentinel values.
+- Whether test rows include labels, candidates, timestamps, or any missing feature groups.
+- Primary metric and any loss-alignment constraints.
+- Leakage constraints and forbidden fields.
+- Submission-facing output shape if it affects the model head.
+
+Keep the snapshot to roughly 8-12 bullets. If a fact is uncertain, mark it `UNKNOWN` and inspect the narrowest official/local source that can resolve it.
+
+Example:
+
+```text
+Data Facts Snapshot:
+- Target: pCVR-style binary label from train/valid only.
+- Test: same feature surface as train minus label.
+- User history: multiple domain sequences, ordered by timestamp before label_time.
+- Static features: user/item scalar int, user/item list int, user dense vectors.
+- Metric: GAUC/logloss path in local evaluator; model head returns one row-level logit.
+- Leakage: no events after label_time in sequence features.
+```
+
 ## Batch Contract
 
 Before editing a model, write or infer the batch contract from the smallest relevant source:

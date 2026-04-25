@@ -75,7 +75,7 @@ Competition-grade deep-learning workflow for TAAC 2026 Tencent UNI-REC and relat
 
 ### `torch-recsys-model-dev`
 
-Systematic PyTorch recommender-model development workflow for repos that already have model ideas, configs, focused tests, and training loops but suffer from bugs, shape drift, mask mistakes, config wiring issues, or uncontrolled context expansion. It keeps agents on current source contracts, reads tests narrowly, and pushes one architecture change through a focused verification ladder before adding more ideas.
+Systematic PyTorch recommender-model development workflow for repos that already have model ideas, compact local data facts, configs, focused tests, and training loops but suffer from bugs, shape drift, mask mistakes, config wiring issues, or uncontrolled context expansion. It keeps agents on current source contracts plus a small Data Facts Snapshot, reads tests narrowly, and pushes one architecture change through a focused verification ladder before adding more ideas.
 
 **Use when** building, debugging, or refactoring `torch.nn.Module` RecSys models with Transformer/HSTU/attention blocks, sparse/dense/list feature fusion, pCVR/CTR heads, ablation axes, or competition model code.
 

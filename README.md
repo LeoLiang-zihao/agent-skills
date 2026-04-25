@@ -67,6 +67,12 @@ Design-first frontend implementation skill for building distinctive, production-
 
 **Use when** the user asks to build or restyle a web page, landing page, dashboard, React component, HTML/CSS artifact, poster, or any interface where visual quality and taste are part of the task.
 
+### `taac-unirec-dl`
+
+Competition-grade deep-learning workflow for TAAC 2026 Tencent UNI-REC and related Tencent Ads Algorithm Competition recommender-system work. It forces agents to inspect official code/data first, use BTCA for official baseline search when needed, preserve dataset schema and evaluator fidelity, and develop Transformer/SASRec/semantic-ID changes through reproducible PyTorch experiments.
+
+**Use when** working on TAAC, Tencent UNI-REC, Tencent Ads Algorithm Competition, Transformer RecSys, SASRec, semantic IDs, sequence modeling, feature interaction, retrieval/ranking, or competition submissions.
+
 ### `youtube-content`
 
 Fetch a YouTube video's transcript via `youtube-transcript-api` and reshape it into the format the user asks for — summary, chapters, chapter summaries, Twitter/X thread, blog post, or quote reel. Accepts every YouTube URL variant (`watch?v=`, `youtu.be/`, `shorts/`, `embed/`, `live/`) or a raw 11-char video ID, supports a language fallback chain (e.g. `--language zh-Hans,zh,en`), and chunks long transcripts before summarizing.

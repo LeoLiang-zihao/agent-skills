@@ -73,6 +73,12 @@ Competition-grade deep-learning workflow for TAAC 2026 Tencent UNI-REC and relat
 
 **Use when** working on TAAC 2026, Tencent UNI-REC, Tencent Ads Algorithm Competition 2026, Transformer recommendation models, unified sequence-plus-feature interaction, retrieval/ranking, official evaluation, or competition submissions.
 
+### `torch-recsys-model-dev`
+
+Systematic PyTorch recommender-model development workflow for repos that already have model ideas, configs, focused tests, and training loops but suffer from bugs, shape drift, mask mistakes, config wiring issues, or uncontrolled context expansion. It keeps agents on current source contracts, reads tests narrowly, and pushes one architecture change through a focused verification ladder before adding more ideas.
+
+**Use when** building, debugging, or refactoring `torch.nn.Module` RecSys models with Transformer/HSTU/attention blocks, sparse/dense/list feature fusion, pCVR/CTR heads, ablation axes, or competition model code.
+
 ### `youtube-content`
 
 Fetch a YouTube video's transcript via `youtube-transcript-api` and reshape it into the format the user asks for — summary, chapters, chapter summaries, Twitter/X thread, blog post, or quote reel. Accepts every YouTube URL variant (`watch?v=`, `youtu.be/`, `shorts/`, `embed/`, `live/`) or a raw 11-char video ID, supports a language fallback chain (e.g. `--language zh-Hans,zh,en`), and chunks long transcripts before summarizing.

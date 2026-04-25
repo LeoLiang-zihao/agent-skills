@@ -5,7 +5,7 @@ description: "Guides deep-learning model development for TAAC 2026 Tencent UNI-R
 
 # TAAC UNI-REC DL
 
-Use this skill for competition-grade PyTorch recommendation modeling where TAAC 2026 official data, unified sequence-plus-feature interaction, and evaluator fidelity matter.
+Use this skill for competition-grade PyTorch recommendation work where TAAC 2026 official data, unified sequence-plus-feature interaction, and evaluator fidelity matter. Pair it with `torch-recsys-model-dev` when the task is model implementation, bug fixing, interface drift, or systematic Transformer/HSTU development.
 
 ## Workflow
 
@@ -20,6 +20,7 @@ Use this skill for competition-grade PyTorch recommendation modeling where TAAC 
    - Do not invent columns, labels, metrics, negative sampling, or target semantics without finding them in official docs/data/code.
 
 3. Develop model code conservatively.
+   - For model implementation and debugging, use `torch-recsys-model-dev` to keep contracts explicit and context small.
    - Treat official baseline behavior as the first regression target; run or reproduce baseline tests before replacing components.
    - Keep model changes modular: embeddings/features, sequence encoder, interaction block, retrieval head, ranker head, loss, sampler, evaluator.
    - Do not assume TAAC 2025 architectures, feature subsets, semantic-ID pipelines, sampling, or metrics apply to TAAC 2026 unless 2026 official docs/code say so.
